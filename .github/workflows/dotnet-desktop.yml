@@ -21,7 +21,13 @@ jobs:
     # Create a global.json file to lock the SDK version to .NET 6
     # This prevents the runner from using a newer, incompatible SDK
     - name: Create global.json
-      run: echo '{ "sdk": { "version": "6.0.400", "rollForward": "latestMinor" } }' > global.json
+      run: |
+        echo '{
+          "sdk": {
+            "version": "6.0.400",
+            "rollForward": "latestMinor"
+          }
+        }' > global.json
 
     # Set up the .NET 6 environment
     - name: Setup .NET
