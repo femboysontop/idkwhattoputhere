@@ -2,24 +2,19 @@
 name: Build Femboy Clicker
 
 on:
-  # Run on pushes to the main branch
   push:
     branches: [ "main" ]
-  # Allow manual runs from the Actions tab
   workflow_dispatch:
 
 jobs:
   build:
-    # Use the latest Windows runner
     runs-on: windows-latest
 
     steps:
-    # Get the code from the repository
     - name: Checkout
       uses: actions/checkout@v4
 
-    # Create a global.json file to lock the SDK version to .NET 6
-    # This prevents the runner from using a newer, incompatible SDK
+    # Ensure global.json is correct
     - name: Create global.json
       run: |
         echo '{
@@ -29,21 +24,20 @@ jobs:
           }
         }' > global.json
 
-    # Set up the .NET 6 environment
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 6.0.x
 
-    # Install project dependencies
+    # Restore dependencies at the solution level if you have an .sln file
     - name: Restore Dependencies
       run: dotnet restore idkwhattoputhere.csproj
 
-    # Build the project for release
+    # Build with platform specification
     - name: Build
-      run: dotnet build idkwhattoputhere.csproj --configuration Release --no-restore
+      run: dotnet build idkwhattoputhere.csproj --configuration Release --no-restore --property:Platform=x86
 
-    # Package the build files into an artifact
+    # Upload build artifact
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
