@@ -39,9 +39,9 @@ jobs:
     - name: Restore Dependencies
       run: dotnet restore idkwhattoputhere.csproj
 
-    # Build the project for release, specifying the x64 platform
+    # Build the project for release using the default platform
     - name: Build
-      run: dotnet build idkwhattoputhere.csproj --configuration Release --no-restore --property:Platform=x64
+      run: dotnet build idkwhattoputhere.csproj --configuration Release --no-restore
 
     # Package the build files into an artifact
     - name: Upload Artifact
