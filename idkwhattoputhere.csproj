@@ -8,6 +8,15 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <!-- This ensures the project builds with the default platform, which is compatible with GitHub Actions -->
     <PlatformTarget>AnyCPU</PlatformTarget>
+    
+    <!-- This block is the fix. It prevents the build system from auto-generating AssemblyInfo. -->
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+    <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
   </PropertyGroup>
 
   <!-- This section adds the necessary package for JSON handling -->
