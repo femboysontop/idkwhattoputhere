@@ -14,7 +14,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    # Ensure global.json is correct
     - name: Create global.json
       run: |
         echo '{
@@ -29,15 +28,12 @@ jobs:
       with:
         dotnet-version: 6.0.x
 
-    # Restore dependencies at the solution level if you have an .sln file
     - name: Restore Dependencies
       run: dotnet restore idkwhattoputhere.csproj
 
-    # Build with platform specification
     - name: Build
-      run: dotnet build idkwhattoputhere.csproj --configuration Release --no-restore --property:Platform=x86
+      run: dotnet build idkwhattoputhere.csproj --configuration Release --no-restore --property:Platform=x64
 
-    # Upload build artifact
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
