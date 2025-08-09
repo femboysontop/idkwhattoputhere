@@ -1,6 +1,7 @@
 # idkwhattoputhere
 
-it's a clicker thing
+it's a clicker thing  
+still buggy might fix bugs but feel free to try
 
 ## how to run/build
 
